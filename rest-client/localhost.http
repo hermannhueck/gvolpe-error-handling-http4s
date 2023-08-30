@@ -1,0 +1,70 @@
+### ----- create user "wumpel" with invalid age
+POST http://localhost:8080/users
+accept: application/json
+content-type: application/json
+
+{ "username": "wumpel", "age": -33 }
+
+### ----- create user "wumpel"
+POST http://localhost:8080/users
+accept: application/json
+content-type: application/json
+
+{ "username": "wumpel", "age": 33 }
+
+### ----- create user "nasenbaer"
+POST http://localhost:8080/users
+accept: application/json
+content-type: application/json
+
+{ "username": "nasenbaer", "age": 44 }
+
+### ----- list all users
+GET http://localhost:8080/users
+accept: application/json
+
+### ----- get user "wumpel"
+GET http://localhost:8080/users/wumpel
+accept: application/json
+
+### ----- get user "nasenbaer"
+GET http://localhost:8080/users/nasenbaer
+accept: application/json
+
+### ----- get non-existing user "unknown-user"
+GET http://localhost:8080/users/unknown-user
+accept: application/json
+
+### ----- patch non-existing user "unknown-user"
+PUT http://localhost:8080/users/unknown-user
+accept: application/json
+content-type: application/json
+
+{"age": 55}
+
+### ----- patch existing user "nasenbaer" with negative age
+PUT http://localhost:8080/users/nasenbaer
+accept: application/json
+content-type: application/json
+
+{"age": -55}
+
+### ----- patch existing user "nasenbaer"
+PUT http://localhost:8080/users/nasenbaer
+accept: application/json
+content-type: application/json
+
+{"age": 55}
+
+### ----- delete non-existing user "user-unknown"
+DELETE http://localhost:8080/users/user-unknown
+
+### ----- delete existing user "nasenbaer"
+DELETE http://localhost:8080/users/nasenbaer
+
+### ----- delete existing user "wumpel"
+DELETE http://localhost:8080/users/wumpel
+
+### ----- list all users
+GET http://localhost:8080/users
+accept: application/json
